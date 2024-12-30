@@ -7,8 +7,9 @@ import databaseConfiguration from '../database/configuration';
 @Module({
   imports: [
     NestConfigModule.forRoot({
-      load: [configuration, databaseConfiguration],
       expandVariables: true,
+      load: [configuration, databaseConfiguration],
+      envFilePath: ['.env', `.env.${process.env.NODE_ENV}`, `.env.${process.env.NODE_ENV}.local`],
     }),
   ],
   controllers: [],
